@@ -1,0 +1,104 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //variable Declaration
+    //Array for user`s input
+    string orak_arik[10];
+    string harga[10];
+    //variable for indexing array
+    int total_harga = 0, total_pesanan = 0;
+    // variables for user`s input
+    int pesanan, uang_bayar, uang_kembali;
+    
+    //program start
+    cout << "------------ Selamat datang di Rumah Makan orak-arik ------------" << endl;
+    cout << "Silahkan ketik nomor sesuai dengan menu yang diingunkan (maksimal 10 pesanan)" << endl;
+    cout << "1.Orak-arik biasa\tRp8.000,- \n2.Orak-arik Gorengan\tRp10.000,- \n3.Orak-arik Sosis\tRp11.000,- \n4.Orak-arik Ayam\tRp12.000,-" << endl;
+    cout << "ketik '0' untuk menyelesaikan pesanan" << endl;
+
+    // Getting input from user
+    while (true)
+    {
+        cin >> pesanan;
+        if (pesanan == 0)
+        {
+            cout << "------------ Terimakasih Sudah Memesan ------------" << endl;
+            break;
+        }
+        else
+        {
+            // adding user`s inputs into the array and calculating the total price from evry item 
+            switch (pesanan)
+            {
+            case 1:
+                orak_arik[total_pesanan] = "Orak-arik Biasa";
+                harga[total_pesanan] = "Rp 8.000,-";
+                total_harga += 8000;
+                total_pesanan++;
+                break;
+            case 2:
+                orak_arik[total_pesanan] = "Orak-arik Gorengan";
+                harga[total_pesanan] = "Rp 10.000,-";
+                total_harga += 10000;
+                total_pesanan++;
+                break;
+            case 3:
+                orak_arik[total_pesanan] = "Orak-arik Sosis";
+                harga[total_pesanan] = "Rp 11.000,-";
+                total_harga += 11000;
+                total_pesanan++;
+                break;
+            case 4:
+                orak_arik[total_pesanan] = "Orak-arik Ayam";
+                harga[total_pesanan] = "Rp 12.000,-";
+                total_harga += 12000;
+                total_pesanan++;
+                break;
+            default:
+                cout << "Nomor yang dimasukan tidak ada di menu" << endl;
+                break;
+            }
+        }
+    }
+
+    // print user`s item from the array
+    cout << "\n------------ Rincian Pesanan ------------" << endl;
+    for (int i = 0; i < total_pesanan; i++)
+    {
+        cout << i + 1 << ". " << orak_arik[i] << " " << harga[i] << endl;
+    }
+    cout << endl;
+
+    // print the total price
+    cout << "------------ Pembayaran ------------" << endl;
+    cout << "Total harga: Rp" << total_harga / 1000 << ".000,-" << endl;
+
+    while (true)
+        {
+            // getting user`s money
+            cout << "Masukan jumlah uang untuk membayar: ";
+            cin >> uang_bayar;
+        
+            // check if the money is enough to pay the total price or not
+            if (uang_bayar > total_harga)
+            {
+                uang_kembali = uang_bayar - total_harga;
+                cout << "Uang kembalian Rp" << uang_kembali << endl;
+                cout << "Uang kembalian dan terimakasih sudah membeli" << endl;
+                break;
+            }
+            else if (uang_bayar < total_harga)
+            {
+                cout << "Uang anda kurang, silahkan masukan uang kembali" << endl;
+            }
+            else
+            {
+                cout << "Uang anda pas" << endl;
+                cout << "Terima kasih dan silahkan datang lagi" << endl;
+            }
+        }
+    return 0;
+}
